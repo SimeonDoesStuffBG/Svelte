@@ -1,33 +1,38 @@
 <script>
-  let name = "Dude";
+  import Items from './components/Items.svelte';
+  import Stats from './components/Stats.svelte';
+  import FeedbackForm from './components/FeedbackForm.svelte';
+  
+
+  //$: count = feedback.length;
+  //$: average = (count===0)?0:feedback.reduce((a,{rating})=>a+rating, 0)/count;
+
+  /*const deleteFeedback = (e) =>{
+    const itemId = e.detail;
+    feedback = feedback.filter(item=>item.id !== itemId);
+  }*/
+
+  const addFeedback = (e)=>{
+    const newFeedback = e.detail;
+    feedback = [newFeedback,...feedback];
+  }
 </script>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <p>
+<main class="container">
+  <h1>Feedback App</h1>
+  <FeedbackForm/>
+  <Stats/>
+    
+    <Items/>
+  </main>
+  <footer>
+    <p>
     Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
     how to build Svelte apps.
-  </p>
-</main>
+    </p>
+  </footer>
+
 
 <style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
+ 
 </style>
